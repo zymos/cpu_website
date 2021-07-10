@@ -1,0 +1,565 @@
+AM2900
+AM29000
+-------
+COSMAC
+1802
+1804
+1806
+-------
+2650
+-------
+6500
+6501
+6502
+6510
+------
+6100
+------
+COP400
+COP8
+CR16
+------
+MN1400
+MN1500
+MN1700
+MN18xx
+AM1
+AM2
+AM3
+AM32
+------
+Basic Stamp
+SX
+Propeller
+------
+ARM6
+ARM7
+ARM8
+ARM9
+ARM10
+ARM11
+ARM Cortex
+ARM Cortex-M
+ARM Cortex-M0
+ARM Cortex-M1
+ARM Cortex-M3
+ARM Cortex-M4
+ARM Cortex-M7
+ARM Cortex-M23
+ARM Cortex-M33
+ARM Cortex-M35
+ARM Cortex-M55
+ARM Cortex-R
+ARM Cortex-R4
+ARM Cortex-R5
+ARM Cortex-R7
+ARM Cortex-R8
+ARM Cortex-R52
+ARM Cortex-R83
+ARM Cortex-R
+ARM Cortex-A
+ARM Cortex-A5
+ARM Cortex-A7
+ARM Cortex-A8
+ARM Cortex-A9
+ARM Cortex-A12
+ARM Cortex-A15
+ARM Cortex-A17
+ARM Cortex-A32
+ARM Cortex-A34
+ARM Cortex-A35
+ARM Cortex-A53
+ARM Cortex-A55
+ARM Cortex-A57
+ARM Cortex-A72
+ARM Cortex-A73
+ARM Cortex-A75
+ARM Cortex-A76
+ARM Cortex-A77
+ARM Cortex-A78
+ARM Cortex-X
+ARM Cortex-X1
+ARM Neoverse
+------
+Rabbit
+Rabbit 2000
+Rabbit 3000
+Rabbit 4000
+Rabbit 5000
+Rabbit 6000
+-----
+LPC700
+LPC900
+XA
+LPC1xxx
+LPC2xxx
+LPC3xxx
+LPC2100
+LPC2200
+LPC2300
+LPC2400
+LPC2900
+LPC3100
+LPC3200
+LPC1100
+LPC1200
+LPC800
+LPC1300
+LPC1700
+LPC1800
+LPC4000
+LPC4300
+RT1050
+RT1050
+-------
+17k
+75X
+75XL
+87XL
+87AD
+78K
+uPD78k
+V810
+V830
+V850
+V8xx
+-----
+720
+740
+-----
+F2MC
+FR
+FR-V
+FM3
+FM4
+FCR4
+-----
+ST6
+ST7
+STM8
+uPSD
+ST10
+ST20
+STR7
+STR8
+STM32
+------
+TLCS-47
+TLCS-870
+TLCS-900
+TX19A
+-----
+SPC700
+SPC900
+SPC970
+SR110
+-----
+MCS-41
+MCS-48
+MCS-51
+MCS-96
+MCS-151
+MCS-196
+MCS-251
+MCS-296
+3000
+4004
+4040
+8008
+8080
+iAPX 432
+8085
+8086
+8088
+186
+188
+286
+386
+486
+486 Overdrive
+Pentium
+Pentium Mobile
+Pentium Pro
+Pentium MMX
+Pentium MMX Mobile
+Pentium Overdrive
+Celeron
+Celeron D
+Pentium II
+Pentium II Overdrive
+Pentium II Celeron
+Pentium II Mobile
+Pentium III
+Pentium III Celeron
+Pentium III Xeon
+Pentium III Mobile
+Pentium 4
+Pentium 4 Celeron
+Pentium M
+Pentium Extream Edition
+XEON
+Xeon
+Pentium II Xeon
+Pentium III Xeon
+Xeon DP
+Xeon MP
+Xeon 3xxx
+Xeon 5xxx
+Xeon 6xxx
+Xeon 7xxx
+Xeon E3
+Xeon E5
+Xeon E7
+Xeon W
+Itanium
+Itanium 2
+Itanium 9300
+Itanium 9500
+Itanium 9700
+Core
+Core 2
+Core M
+Core m3
+Core m5
+Core m7
+Core i3
+Core i5
+Core i7
+Core i9
+Core (1st Gen)
+Core (2nd Gen)
+Core (3rd Gen)
+Core (4th Gen)
+Core (5th Gen)
+Core (6th Gen)
+Core (7th Gen)
+Core (8th Gen)
+Core (9th Gen)
+Core (10th Gen)
+Core (11th Gen)
+Core (12th Gen)
+Atom (1st Gen)
+Atom (2nd Gen)
+Atom (3rd Gen)
+Atom (4th Gen)
+Atom (5th Gen)
+Atom (6th Gen)
+Atom (7th Gen)
+Atom (8th Gen)
+i860
+i960
+Polaris
+Cloud Computing
+------
+5x86
+6x86
+6x86L
+6x86MX
+GX1
+GXm
+MII
+MXi
+MediaGX
+M3
+-------
+Nx586
+-------
+MP6
+-------
+TM5600
+TM5800
+-------
+WE 32100
+WE 32200
+-------
+DSP16
+DSP32
+-------
+DSP16
+DSP32
+-------
+HT32
+HT85
+HT48
+HT46
+HT49
+HT82
+HT95
+HT68
+HT66
+------
+XC800
+XE166
+XC2000
+C166
+C167
+XMS1000
+XMC4000
+TriCore
+MC14500
+6800
+6805
+6809
+HC05
+HC08
+S08
+HC11
+HC12
+HCS12
+S12
+HC16
+68000
+68020
+68030
+68040
+68050
+68060
+683xx
+Coldfire
+PowerQUICC
+PowerQUICC II
+PowerQUICC III
+DSP56800
+PowerPC
+POWER
+POWER2
+POWER3
+POWER4
+POWER5
+POWER6
+POWER7
+POWER8
+POWER9
+POWER10
+POWER11
+POWER12
+z9
+z10
+z11
+z12
+z13
+z14
+z15
+z16
+z17
+------
+WinChip
+WinChip 2
+WinChip C6
+-------
+Am5x86
+5k86
+K5
+K6
+K6-2
+K6-2+
+K6-III
+K6-III+
+K7 Athlon
+K7 Duron
+Athlon
+Athlon II
+Athlon MP
+Athlon X2
+Athlon X4
+Athlon 4
+Athlon XP
+Athlon 64
+Sempron
+Sempron X2
+Opteron
+Opteron 3xxx
+Opteron 4xxx
+Opteron 6xxx
+Phenom
+Phenom II
+Phenom X3
+Phenom X4
+Turion
+Turion II
+Turion 64
+R-Series
+V-Series
+Ryzen
+Rysen 3
+Sysen 5
+Rysen 7
+Zen
+A4-Series
+A6-Series
+A8-Series
+A10-Series
+A12-Series
+E1-Series
+E2-Series
+FX-Series
+--------
+Cyrix III
+C3
+C7
+Eden
+Eden ESP
+Nano
+CHA
+--------
+Alpha
+Alpha AXP
+--------
+V20
+V25
+V30
+V50
+V60
+-------
+R2000
+R3000
+R6000
+R4000
+R4200
+R4300i
+R4400
+R4600
+R4700
+R5000
+RM5271
+RM7000
+R8000
+R10000
+R12000
+MIPS32
+--------
+H1
+H2
+---------
+SPARC
+SuperSPARC
+SuperSPARC II
+TurboSPARC
+hyperSPARC
+microSPARC
+microSPARC II
+UltraSPARC
+UltraSPARC II
+UltraSPARC III
+UltraSPARC IV
+SPARC T1
+SPARC T2
+SPARC RK
+SPARC T3
+SPARC T4
+SPARC T5
+SPARC M5
+SPARC M6
+SPARC M7
+SPARC S7
+SPARC M7
+SPARC M8
+LEON
+LEON2
+LEON3
+LEON4
+LEON5
+LEON6
+SPARClite
+SPARC64
+SPARC64 II
+SPARC64 III
+SPARC64 GP
+SPARC64 IV
+SPARC64 V
+SPARC64 VI
+SPARC64 VII
+SPARC64 VIII
+SPARC64 X
+SPARC64 XI
+SPARC64 XII
+SPARC 900
+R1000
+---------
+PA RISC
+PowerVR2
+SuperH
+SH-1
+SH-2
+SH-3
+SH-4
+------
+Z80
+Z8000
+Z8
+Z180
+eZ8
+eZ80
+Z16
+-------
+6502
+65816
+65C816
+-------
+Game & Watch
+Game Boy
+Game Goy Color
+Game Boy Advanced
+Nintendo DS
+Nintendo 3DS
+Nintendo Switch
+Nintendo
+NES
+Super Nintendo
+SNES
+Nintendo 64
+N64
+Game Cube
+Wii
+Wii U
+-------
+Xbox
+Xbox 360
+Xbox One
+Xbox One X
+Xbox Series X/S
+-------
+Playstation I
+Playstation II
+Playstation III
+Playstation 4
+Playstation 5
+-------
+CXP80300
+CXP80600
+-------
+PIC10
+PIC12
+PIC16
+PIC18
+PIC24
+PIC32
+dsPIC
+-------
+AT89
+AT90
+ATtiny
+ATmega
+ATxmega
+AT91SAM
+AVR32
+-------
+S1C6x
+S1C88
+S1C17
+S1C33
+-------
+ESP8266
+ESP32
+-------
+NS32000
+NS16000
+-------
+TMS1000
+TMS7000
+TMS9900
+TMS370
+TMS320
+MSP430
+-------
+TV/Monitor

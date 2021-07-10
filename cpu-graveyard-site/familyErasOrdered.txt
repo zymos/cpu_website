@@ -1,0 +1,169 @@
+AM2900
+AM29000
+-------
+1802
+1804
+1806
+-------
+2650
+-------
+6500
+6501
+6502
+6510
+------
+3000
+4004
+4040
+8008
+8080
+8085
+8086
+8088
+186
+188
+286
+386
+486
+486 Overdrive
+Pentium
+Pentium Mobile
+Pentium Pro
+Pentium MMX
+Pentium MMX Mobile
+Pentium Overdrive
+Celeron
+Pentium II
+Pentium II Overdrive
+Pentium II Celeron
+Pentium II Xeon
+Pentium II Mobile
+Pentium III
+Pentium III Celeron
+Pentium III Xeon
+Pentium III Mobile
+Pentium 4
+Pentium 4 Celeron
+Pentium M
+XEON
+Xeon DP
+i860
+i960
+------
+5x86
+6x86
+-------
+DSP16
+DSP32
+-------
+MC14500
+6800
+6805
+6809
+68000
+68020
+68030
+68040
+68050
+68060
+683xx
+PowerPC
+HC05
+HC08
+HC11
+HC12
+HCS12
+HC16
+------
+Am5x86
+5k86
+K5
+K6
+K6-2
+K6-2+
+K6-III
+K6-III+
+K7 Athlon
+K7 Duron
+Athlon 4
+Athlon XP
+Athlon 64
+--------
+Alpha AXP
+--------
+V20
+V25
+V30
+V50
+-------
+R2000
+R3000
+R6000
+R4000
+R4200
+R4300i
+R4400
+R4600
+R4700
+R5000
+RM5271
+RM7000
+R8000
+R10000
+R12000
+--------
+H1
+H2
+---------
+SuperSPARC
+SPARC
+microSPARC
+UltraSPARC
+---------
+PA RISC
+PowerVR2
+SuperH
+SH-1
+SH-2
+SH-3
+SH-4
+------
+Z80
+Z8
+Z8000
+Z180
+-------
+6502
+65816
+-------
+MCS-41
+MCS-48
+MCS-51
+MCS-96
+MCS-251
+-------
+Nintendo
+Gameboy
+Super Nintendo
+Nintendo 64
+Game Cube
+Wii
+-------
+Playstation I
+Playstation II
+-------
+CXP80300
+CXP80600
+-------
+PIC12
+PIC16
+-------
+NS32000
+NS16000
+-------
+TMS1000
+TMS7000
+TMS9900
+TMS320
+-------
+TV/Monitor
