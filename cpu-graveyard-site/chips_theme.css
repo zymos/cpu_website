@@ -1,0 +1,263 @@
+a {
+	font-family:Tahoma, Geneva, sans-serif;
+	text-decoration: none;
+	color: #ffffff;
+}
+
+a:hover {
+	color: #ffffff;
+	text-decoration: underline;
+}
+
+a:link {
+	color: #dddddd;
+}
+
+a:visited {
+	color: #dddddd;
+}
+
+a:active {
+	color: #dddddd;
+}
+
+body {
+	background-color: #444444;
+	color: #cccccc;
+	background-image: url(/files/theme/grave-2.jpg);
+	background-repeat: no-repeat}
+
+div {
+	font-size:12px;
+}
+
+span {
+	font-size:12px;
+}
+
+.chipTypeHeading {
+	font-size:25px;
+	font-weight:bold;
+}
+
+.wiki_super		{
+	vertical-align: top;
+	font-size: 40%;
+	text-decoration:none;
+}
+
+.center		{
+	text-align:center;
+	display:block;
+}
+
+.heading1	{
+	font-size:30px;
+}
+
+.heading2	{
+	font-size:22px;
+}
+
+.heading3	{
+	font-size:16px;
+	font-weight:bold;
+}
+
+.list_element	{
+	font-size: 14px;
+}
+
+.list_element_wiki	{
+	font-size: 11px;
+}
+
+ .desc_table {
+	width: 400px;
+	border: 1px solid #656565;
+	font-size:12px;
+}
+
+.heading1t	{
+	font-size:24px;
+}
+
+.heading2t	{
+	font-size:18px;
+}
+
+.tableDisplayManufType 	{
+	font-size:30px;
+}
+
+.table_zebra_striped tr:nth-child(odd) {
+	background-color: #3c3c3c;
+}
+.table_zebra_striped tr:nth-child(even) {
+	background-color: #444444;
+}
+
+.tableDisplayFamily 	{
+	font-size:25px;
+}
+
+.tableDisplayPartNum 	{
+	font-size:25px;
+}
+
+.sidebarManufName 	{
+	font-size:12px;
+}
+
+.sidebarManufCount  {
+	font-size:12px;
+}
+
+.sidebarManufList	{
+	padding: 0px 0px 3px 0px;
+}
+
+.sidebarManufCountSelected  {
+	font-size:12px;
+}
+
+.sidebarManufNameSelected 	{
+	font-size:14px;
+	font-weight:bold;
+}
+
+.manufFamilyListSelected 	{
+	font-size:12px;
+	font-weight:bold;
+}
+
+.sidebarManufFamilyList		{
+	margin: 2px 10px 0px 0px;
+}
+
+.sidebarManufFamilyListElement	{
+	margin: 0px 0px 2px 0px;
+}
+
+.topChipCount {
+	font-size:10px;
+}
+
+.gloss_value	{
+	margin:0px 0px 30px 20px;
+	font-size:14px;
+}
+
+.tableParam {
+	font-size:12px;
+	font-weight:bold;
+}
+
+.tableValue {
+	font-size:12px;
+}
+
+.tableChipParam {
+	font-size:12px;
+	font-weight:bold;
+}
+
+.tableChipValue {
+	font-size:12px;
+}
+
+.tableChipSubHeading {
+	font-size:12px;
+	font-weight:bold;
+	text-decoration: underline;
+}
+
+.tableChipFullDetails {
+	font-size:14px;
+	font-weight:bold;
+}
+
+.tableTitle {
+	font-size:30px;
+}
+
+.familyTable {
+	border: 1px solid white;
+	border-collapse: collapse;
+}
+
+.familyDescTable {
+	width: 100%;
+	border: 1px solid #656565;
+	font-size: 14px;
+	padding: 5px;
+}
+
+.familyDescTable td {
+	padding: 5px 0 0 10px;
+	vertical-align: top;
+	text-align: left;
+}
+
+
+.familyDescTableName {
+	font-size:20px;
+	font-weight:bold;
+	padding-bottom: 5px;
+}
+
+.familyDescTableParam {
+	font-size:12px;
+	font-weight:bold;
+}
+
+.familyDescTableValue {
+	font-size:12px;
+}
+
+.title_box {
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.title {
+	font-size:40px;
+	font-weight:bold;
+	text-align:center;
+	text-shadow: #222222 6px 6px 6px;
+	width: 100%}
+
+.title_sub {
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+	text-shadow: #222222 6px 6px 6px;
+}
+
+.introTextTitle {
+	font-size:28px;
+	font-weight:bold;
+}
+
+.introText {
+	font-size:18px;
+}
+
+.tail {
+	text-align:center;
+	font-size:12px;
+}
+
+.tablepadding2 td {
+	padding: 2px;
+}
+
+.tablepadding5 td {
+	padding: 5px;
+}
+
+.tablespacing5 td {
+	margin: 2px;
+}
+

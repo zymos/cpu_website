@@ -49,39 +49,6 @@
 #  Hitachi - HD68450_8	https://happytrees.org/testing/ic/Hitachi/HD68450%5F8
 #  New chips on homepage
 #
-#
-#
-# FIXME
-# manuf page -> processor boards links are old style
-# - %manufListCountGlobal - create_html_sidebar ----
-# $VAR1 = {
-#           'ADMtek' => 1,
-#           'GTE' => 3,
-#           'LSI Logic' => 3,
-#           'Auctor' => 1,
-#           'DEC' => 5,
-#           'Apple' => 2,
-#           'Intel' => 314,
-#           'Sony' => 8,
-#           'Ricoh' => 2,
-#           'RDA' => 1,
-#           'Hitachi' => 11,
-#           'Sun' => 26,
-#           'Fujitsu' => 11,
-#           'Inmos' => 2,
-#           'Zarlink' => 2,
-#           'Philips' => 6,
-#           'Synertek' => 3,
-#           'TI' => 15,
-#           'OKI' => 4,
-#           'Renesas' => 3,
-#           'AMI' => 3,
-#           'Temic' => 2,
-#           'ATI' => 4,
-#           'HASH(0x557967ebe8c0)' => undef,
-#           'WSI' => 1,
-#
-#
 # use warnings;
 #
 
@@ -142,12 +109,12 @@ $varient_page_number = 4;
 
 @manuf_others_list_global = ('2WIRE','ATI','Alcatel','Broadcom','Conexant','Microsoft','Virata','Zarlink','Zoran','nVIDIA','General Instruments','Nintendo','Sega','GPS','ELAN','ADMtek','Sanyo','STC','Temic','Novatek','Matsushita');
 
-$webpage_rootG = 'generated_pages/chips';
 
 ######################################################
 ############## Coding ################################
 ######################################################
 
+$relativeLoc = '.';
 # sub check_script_location { # no longer used
 	# my @scriptParts = split(/\//,$scriptName);
 	# $relativeLoc = '.';
@@ -165,182 +132,24 @@ $webpage_rootG = 'generated_pages/chips';
 sub read_input {
 
     my %query_out;
-
-    local ($buffer, @pairs, $pair, $name, $value, %FORM);
-    # Read in text
-    $ENV{'REQUEST_METHOD'} =~ tr/a-z/A-Z/;
-    if ($ENV{'REQUEST_METHOD'} eq "POST")
-    {
-        read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
-    } else
-    {
-        $buffer = $ENV{'QUERY_STRING'};
-    }
-	# $buffer = 'page=manufacturer&manufacturer=AMD&family=AM29000';
-    # Split information into name/value pairs
-    my @pairs = split(/&/, $buffer);
-    foreach $pair (@pairs)
-    {
-        ($name, $value) = split(/=/, $pair);
-        $value =~ tr/+/ /;
-        $value =~ s/%(..)/pack("C", hex($1))/eg;
-        $FORM{$name} = $value;
-    }
-
-	# print "Content-type: text/plain\n\n";
-	# print "ENV{'QUERY_STRING'} -> $ENV{'QUERY_STRING'}\n\n";
-	# print "FORM{'page'} -> $FORM{'page'}\n\n";
-	# exit;
+				$query_out{'page'} = 'e'; 
 
 
-	if( $FORM{'page'} eq '' ){
-		@value = split('\/', $FORM{'var'});
-		# print Dumper @value;
-		# print "<br>0=>$value[0], 1=>$value[1], 2=>$value[2]<br>\n";
-		# print "xxxxxxxxxx";
-		switch($value[0]){
-			case 'categories'{		$query_out{'page'} = 'cat'; }
-			case 'families'	{ 	$query_out{'page'} = 'cat';
-								$query_out{'type'} = 'family'; }
-			case 'manufacturers'{	$query_out{'page'} = 'cat';
-									$query_out{'type'} = 'manuf'; }
-			case 'architecture'{$query_out{'page'} = 'cat';
-								$query_out{'type'} = 'arch'; }
-			case 'data_width'{		$query_out{'page'} = 'cat';
-									$query_out{'type'} = 'data_width'; }
-			case 'chip_types'	{ 	$query_out{'page'} = 'cat';
-								$query_out{'type'} = 'type'; }
-			case 'ISA'{				$query_out{'page'} = 'cat';
-									$query_out{'type'} = 'isa'; }
-			case 'technologies'{$query_out{'page'} = 'cat';
-								$query_out{'type'} = 'tech'; }
-			case 'release_date'{		$query_out{'page'} = 'cat';
-									$query_out{'type'} = 'date'; }
-			case 'logos'	{	$query_out{'page'} = 'cat';
-									$query_out{'type'} = 'logo'; }
-			case 'applications'{$query_out{'page'} = 'cat';
-								$query_out{'type'} = 'app'; }
-			case 'boards'	{ 		$query_out{'page'} = 'board'; }
-			case 'board'    { 	$query_out{'page'} = "board";
-								$query_out{'manuf'} = $value[1];
-								$query_out{'name'} = $value[2]; }
-			case 'module_boards'{	$query_out{'page'} = 'board';
-									$query_out{'type'} = 'module'; }
-			case 'evaluation_boards'{	$query_out{'page'} = 'board';
-										$query_out{'type'} = 'eval'; }
-			case 'ic'{		$query_out{'page'} = "chip";
-							$query_out{'manufacturer'} = $value[1];
-							$query_out{'part'} = $value[2]; }
-			case 'full_list'{	$query_out{'page'} = 'fullList'; }
-			case 'trade'	{ 		$query_out{'page'} = 'tradeList'; }
-			case 'glossary'	{ 	$query_out{'page'} = 'glossary'; }
-			case 'sitemap'  { 		$query_out{'page'} = 'site_map'; }
-			case 'm'  		{ 	$query_out{'page'} = "manufacturer";
-								$query_out{'manufacturer'} = "$value[1]"; }
-			case 'mf'		{		$query_out{'page'} = "manufacturer";
-									$query_out{'manufacturer'} = "$value[1]";
-									$query_out{'family'} = "$value[2]";}
-			case 'family'	{	$query_out{'page'} = "family";
-								$query_out{'family'} = "$value[1]";}
-			case '404'		{	$query_out{'page'} = "404";	}
-			case ''			{	$query_out = ''; }
-			else			{		$query_out{'page'} = '404'; } # unknown page
-		}
+								$query_out{'name'} = 'b'; 
 
-		if( $DEBUG ){
-		print "Content-type: text/html\n\n";
-		print "ENV{'QUERY_STRING'} -> '$ENV{'QUERY_STRING'}' <br><br>\n\n";
-		print "FORM{'page'} -> $FORM{'page'} <br><br>\n\n";
-		print "value0 -> '$value[0]', value1 -> '$value[1]', value2 -> '$value[2]' <br><br>\n\n";
-		foreach $key (keys %query_out){
-			print "query_out = key -> '$key' value -> '$query_out{$key}'<br>";
-		}
-		foreach $key (keys %FORM){
-			print "FORM = key -> '$key' value -> '$FORM{$key}'<br>";
-		}
-		print "<br><br>Location: $script_url\n\n";
-		}
-		# exit;
+										$query_out{'type'} = 'f'; 
+
+							$query_out{'part'} = 'a'; 
+
+								$query_out{'manufacturer'} = "c"; 
+
+								$query_out{'family'} = "d";
+
+
 
 		return %query_out
-	}else{
-		# old query style, redirect
-		my $man = url_encode($FORM{'manufacturer'});
-		my $fam = url_encode($FORM{'family'});
-		my $par = url_encode($FORM{'part'});
-		my $manu = url_encode($FORM{'manuf'});
-		switch( $FORM{'page'} ) {
-			case 'cat' {
-						switch( $FORM{'type'} )  {
-							case 'family' { $url_path = "/families"; }
-							case 'manuf' { 	$url_path = "/manufacturers"; }
-							case 'arch' { 	$url_path = "/architecture"; }
-							case 'data_width' { $url_path = "/data_width"; }
-							case 'type' { 	$url_path = "/chip_types"; }
-							case 'isa' { 	$url_path = "/ISA"; }
-							case 'tech' { 	$url_path = "/technologies"; }
-							case 'date' { 	$url_path = "/release_date"; }
-							case 'app' { 	$url_path = "/applications"; }
-							else { 			$url_path = "/categories"; }
-						}
-					}
-			case 'manufacturer' {
-						if( $man eq '' ) {
-							$url_path = '';
-						}elsif( $fam ne '' ) {
-							$url_path = "/mf/$man/$fam";
-						}else{
-							$url_path = "/m/$man";
-						}
-					}
-			case 'chip' { 
-						if( $man eq '' ) {
-							$url_path = '';
-						} elsif ( $par eq '' ) {
-							$url_path = '';
-						} else {
-							$url_path = "/ic/$man/$par" ;
-						}
-					}
-			case 'board' { 
-						if( $FORM{'type'} eq '' && $manu eq '' ) {
-							$url_path = '/boards';
-						} elsif ( $manu ne '' ) {
-							$url_path = "/board/$manu/$par" ; 
-						} elsif( $FORM{'type'} eq 'module' ) {
-							$url_path = '/module_boards';
-						} elsif( $FORM{'type'} eq 'eval' ) {
-							$url_path = '/evaluation_boards';
-						} else {
-							$url_path = "" ;
-						}
-					}
-			case 'family' 	{ $url_path = "/family/$fam"; }
-			case 'glossary' { $url_path = "/glossary"; }
-			case 'site_map' { $url_path = "/sitemap";}
-			case 'tradeList'{ $url_path = "/trade";}
-			case 'fullList' { $url_path = "/full_list";}
-			else			{ $url_path = ""; }
-		}
-		
-		# redirect old format to new
-		# print "Content-type: text/html\n\n";
-		# print "ENV{'QUERY_STRING'} -> '$ENV{'QUERY_STRING'}' <br><br>\n\n";
-		# print "FORM{'page'} -> $FORM{'page'} <br><br>\n\n";
-		# print "value0 -> '$value[0]', value1 -> '$value[1]', value2 -> '$value[2]' <br><br>\n\n";
-		# foreach $key (keys %FORM){
-			# print "FORM = key -> '$key' value -> '$FORM{$key}'<br>";
-		# }
-		# print "<br><br>Location: $script_url\n\n";
-
-		# print "<br><br>Redirecting Location: " . $script_url . $url_path . "\n\n";
-		 
-		# print "Status: 301 Moved Permanently\n";
-		print "Status: 307\n";
-		print "Location: " . $script_url . $url_path . "\n\n";
-		exit;
-		# return %FORM;
-	}
+	
+	
 }
 ###############Inport ARGS (end) ##################
 
@@ -476,7 +285,7 @@ sub parse_ods {
 							$col_repeated = $cell;
 							$col_repeated =~ s/table:number-columns-repeated="//;
 							$col_repeated =~ s/".*//;
-							for (my $x=1;$x<=$col_repeated;$x++) {
+							for (my $x=1;$x<=$col_repeated;$x++) { #FIXME col_repeated is not a int
 								$data[$sheet_num][$row_num][$col_num]=$cell_content;
 								$data[$sheet_num][$row_num][$col_num] =~ s/[\s\n]*$//g;  # remove trailing whitespace/newline
 								$col_num++;
@@ -707,15 +516,6 @@ sub getColLabels {
 	}
 }
 
-
-
-
-
-sub add_debug_var{
-  $DEBUG_TEXT .= "-------------------\@manufFamilies \n------\n" . Dumper(\@_[0]) . "\n---------\n";
-}
-
-
 sub getColChipData {
 	my $row=$skipLines;
 	my @manufList = ();
@@ -723,33 +523,29 @@ sub getColChipData {
 	@manufListGlobal = ();
 	@familyListGlobal = ();
 
+
+  # initialize
+  $manufFamilyCountGlobal{'Other'} = ''; 
+	while (&chipData2($row,$colPart) ne '') {
+    $manufListCountGlobal{&chipData2($row,$colManuf)} ='';
+    $manufFamilyCountGlobal{&chipData2($row,$colFamily)} = ''; # FIXME
+		$row++;
+  }
+
+  # set
+ 	my $row=$skipLines;
 	while (&chipData2($row,$colPart) ne '') {
 		#Makes a list of manuf and fams
 		$manufList[$row-1]=&chipData2($row,$colManuf);
 		$familyList[$row-1]=&chipData2($row,$colFamily);
-	
-    if ( defined $manufListCountGlobal{&chipData2($row,$colManuf)} ){
-      if ($manufListCountGlobal{&chipData2($row,$colManuf)} eq '') {
-        $manufListCountGlobal{&chipData2($row,$colManuf)} =1;
-        print "T"
-      } else {
-        $manufListCountGlobal{&chipData2($row,$colManuf)}++;
-        print "D";
-      }
-    }else{ # undefined
-      $manufListCountGlobal{&chipData2($row,$colManuf)}  = 1;
-      print "X";
-    }
-
-
-    # BROKEN
+		
 		# This makes a list and count of manuf
-		# if ($manufListCountGlobal{&chipData2($row,$colManuf)} eq '') {
-		#   $manufListCountGlobal{&chipData2($row,$colManuf)} =1;
-		# } else {
-		#   $manufListCountGlobal{&chipData2($row,$colManuf)}++;
-		# }
-    
+		if ( $manufListCountGlobal{&chipData2($row,$colManuf)} eq '') {
+			$manufListCountGlobal{&chipData2($row,$colManuf)} =1;
+		} else {
+			$manufListCountGlobal{&chipData2($row,$colManuf)}++;
+		}
+
 		# Count families for this manufacturer
 		if ( &chipData2($row,$colManuf) eq $data{'manufacturer'} ) {
 			if (&chipData2($row,$colFamily) eq '') {
@@ -764,9 +560,9 @@ sub getColChipData {
 		$row++;
 	}
 	$totalChipCountGlobal=$row;
+  
+  $DEBUG_TEXT .= Dumper(\@manufList);
 
-
-  # $DEBUG_TEXT .= "-------------------\@manufFamilies \n------\n" . Dumper(\%manufListCountGlobal) . "\n---------\n";
 	undef %saw;
 	@saw{@manufList} = ();
 	@manufListGlobal = sort keys %saw;  
@@ -778,8 +574,6 @@ sub getColChipData {
 
 	@manufFamilies = keys %manufFamilyCountGlobal;
 	&sortManufFamilies(%manufFamilyCountGlobal);
-
-  $DEBUG_TEXT .= "\@manufFamilies \n------\n" . Dumper(\@manufFamilies) . "\n---------\n";
 }
 
 
@@ -788,18 +582,18 @@ sub sortManufFamilies {
 	#this creating two ordered arrays, organized by era to print prettylike
 	# @manufFamilyListGlobal
 	# @manufFamilyListCountGlobal
-
-  $DEBUG_TEXT .= "xpxpx" . Dumper(\%manufFamilyCountGlobal);
 	my %manufFamilyCount = %manufFamilyCountGlobal; # $_[0]???
 	my $x=0;
 	my $hasOther=0;
 	my $isInList=0;
 	
-	foreach $famEra (@chipErasGlobal) { #sorts the families included in chipEras list  
-		if ($manufFamilyCount{$famEra} ne '' ) {
-			$manufFamilyListGlobal[$x]=$famEra;
-			$manufFamilyListCountGlobal[$x]=$manufFamilyCount{$famEra};
-			$x++;	
+	foreach $famEra (@chipErasGlobal) { #sorts the families included in chipEras list 
+    if(defined $manufFamilyCount{$famEra}){
+      if ($manufFamilyCount{$famEra} ne '' ) {
+			  $manufFamilyListGlobal[$x]=$famEra;
+			  $manufFamilyListCountGlobal[$x]=$manufFamilyCount{$famEra};
+			  $x++;	
+      }
 		}
 	}
 	
@@ -832,8 +626,6 @@ sub sortManufFamilies {
 		unshift(@manufFamilyListGlobal, "All");
 		unshift(@manufFamilyListCountGlobal, "null");
 	}
-
-  $DEBUG_TEXT .= Dumper(\@manufFamilyListGlobal);
 }
 
 
@@ -2565,10 +2357,10 @@ sub create_html_body_main_site_map {
 						<li><span class="list_element"><a href="$script_url/glossary/">Glossary</a></span>
 						<li><span class="list_element"><a href="https://happytrees.org.org/files/chipCollection-v1.03.ods">Collection data (raw)</a>: Open Office spreadsheet, under the <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/us/">CC-BY-SA 3.0 license</a></span>
 						<li><span class="list_element"><a href="$code_loc">Page source code</a>: under <a href="https://en.wikipedia.org/wiki/GPL_license">GPL-3.0 license</a></span>
-						<li><span class="list_element"><a href="$relativeLoc/$photoLoc">Chip images</a>: under the <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/us/">CC-BY-SA 3.0 license</a></span>
-						<li><span class="list_element"><a href="$relativeLoc/$datasheet_loc">Datasheets</a></span>
+						<li><span class="list_element"><a href="$photoLoc">Chip images</a>: under the <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/us/">CC-BY-SA 3.0 license</a></span>
+						<li><span class="list_element"><a href="$datasheet_loc">Datasheets</a></span>
 						<li><span class="list_element"><a href="$script_url/logos/">Manufacture logos</a></span>
-						<li><span class="list_element"><a href="$relativeLoc/$logoLoc"></a>Family logos: to be added</span>
+						<li><span class="list_element"><a href="$logoLoc"></a>Family logos: to be added</span>
 					</ul>
 					<div class="heading2">Other:</div>
 					<ul>
@@ -3939,6 +3731,7 @@ sub create_html_intro_manuf {
 
 	if ( $name eq '' ) {
 		$name = $data{'manufacturer'};
+    print "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 	}
 	if ( $logo1 ne '' ) {
 		$logo1 = "<div style=\"text-align: center;\"><a href=\"$script_url/logos/\"><img src=\"$relativeLoc/$logoLoc/$logo1\" alt=\"$name\"></a></div>";
@@ -4341,12 +4134,13 @@ Endhtml
 
 sub create_html_head {
 	my $text='';
-	# https://www.w3schools.com/css/css_font.asp
+	my $meta_testing = '';
+  # https://www.w3schools.com/css/css_font.asp
 	my $meta_robots='';
 	if( $script_url 	=~ 'testing') {
 		$meta_testing	='	<meta name="robots" content="noindex">' . "\n";
 		$meta_testing	.='	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />' . "\n";
-		$meta_texting	.='	<meta http-equiv="Pragma" content="no-cache" />' . "\n";
+		$meta_testing	.='	<meta http-equiv="Pragma" content="no-cache" />' . "\n";
 		$meta_testing	.='	<meta http-equiv="Expires" content="0" />' . "\n";
 	}
 
@@ -4434,10 +4228,8 @@ return $text;
 sub create_html_sidebar {
     my $text = '';
     my $x=0;
+    my $unselectedCompanies='';
 # $text = <<Endhtml;
-
-    $DEBUG_TEXT .= "-- \%manufListCountGlobal - create_html_sidebar ----\n";
-    $DEBUG_TEXT .= Dumper(\%manufListCountGlobal) . "\n";
 
 # <!-- sidebar -->
 	# <div>
@@ -4507,7 +4299,9 @@ Endhtml
 	# displays the manuf as others that arnt worth having there own list
 	my $others_count=0;
 	foreach $other_manuf (@manuf_others_list_global){
-		$others_count += $manufListCountGlobal{"$other_manuf"};
+    if(defined $manufListCountGlobal{$other_manuf}){
+  		$others_count += 1; # $manufListCountGlobal{$other_manuf};
+    }
 	}
 	$unselectedCompanies= $unselectedCompanies .  "\t<div class=\"sidebarManufList\"><a href=\"$script_url/m/Others\"><span class=\"sidebarManufName\">Others</span></a>&nbsp;<span class=\"sidebarManufCount\">($others_count)</span></div>\n";
 	$text .= $unselectedCompanies;
@@ -4551,14 +4345,14 @@ sub create_html_body_intro {
 		<h1 style="text-align: center;">CPU Grave Yard is my collection of CPU / MCU / SoC / FPU </h1>
 		<div style="float: right; width: 150px; text-align: center;">
 			<a href="$script_url/ic/MOS/MCS6501">
-			<img style="width: 120px;" src="$relativeLoc/$photoLoc/sm/ic-photo-MOS--MCS6501--(6501-CPU).JPG_sm.jpg" alt="MOS MCS6501">
+			<img style="width: 120px;" src="$photoLoc/sm/ic-photo-MOS--MCS6501--(6501-CPU).JPG_sm.jpg" alt="MOS MCS6501">
 			<p>MOS 6501</p>
 			</a>
 		</div>
 		<p>I currently have <b>$totalChipCountGlobal</b> chips in my collection. Allot of them are pretty common, but some are rare, and a few are extreamly rare.  Some of the really rare one are Intel <a href="$script_url/ic/Intel/MD3002_C">MD3002/C</a> and <a href="$script_url/ic/Intel/MC3003">MC3003/C</a>. The rarest one I own is the MOS <a href="$script_url/ic/MOS/MCS6501">MCS6501</a>.  By court order all of these chip where required to be destroyed.  There are less than 10 in existance. </p><br />
 		<div style="float: left; width: 150px; text-align: center;">
 			<a href="$script_url/ic/AMD/AM2901DC">
-			<img style="width: 120px;" src="$relativeLoc/$photoLoc/sm/ic-photo-AMD--AM2901DC-(2900-ALU).png_sm.jpg" alt="AMD AM2901">
+			<img style="width: 120px;" src="$photoLoc/sm/ic-photo-AMD--AM2901DC-(2900-ALU).png_sm.jpg" alt="AMD AM2901">
 			<p>AMD AM2901</p>
 			</a>
 		</div>
@@ -4598,7 +4392,7 @@ sub create_html_body_intro {
 			<tr>
 				<td>
 		<a href="$script_url/ic/DEC/21064_BB_A233">
-		<img src="$relativeLoc/$photoLoc/sm/ic-photo-DEC--21-40532-03-(21064-BB)-(Alpha-AXP).png_sm.jpg" alt="DEC Alpha AXP" width="100">
+		<img src="$photoLoc/sm/ic-photo-DEC--21-40532-03-(21064-BB)-(Alpha-AXP).png_sm.jpg" alt="DEC Alpha AXP" width="100">
 		<p>DEC Alpha</p>
 		</a>
 				</td><td>
@@ -4934,9 +4728,9 @@ sub set_query_vars{
   $data{'category'} = $Dcategory;
   $data{'part'} = $Dpart;
 
-  # print "----------set_query_vars [data]----------\n";
-  # print Dumper \%data;
-  # print "+++++++++++++++++++++++++++++++++++++++\n";
+  $DEBUG_TEXT .=  "----------set_query_vars [data]----------\n";
+  $DEBUG_TEXT .= Dumper(\%data);
+  $DEBUG_TEXT .=  "+++++++++++++++++++++++++++++++++++++++\n";
 
 }
 
@@ -4960,21 +4754,6 @@ sub html_to_file{
   # }else{
   #   print "html not set \n"
   # }
-
-  # Delete old
-  print "Deleting old: $webpage_rootG";
-  remove_tree( $webpage_rootG, {error => \my $err} );
-  if ($err && @$err) {
-    for my $diag (@$err) {
-        my ($file, $message) = %$diag;
-        if ($file eq '') {
-            print "general error: $message\n";
-        }
-        else {
-            print "problem unlinking $file: $message\n";
-        }
-    }
-}
 
   # make dirs if needed: get list of directories
   @dirs = split('/', $filename);
@@ -5182,7 +4961,7 @@ sub create_page_list{
   my @file_locations;
   my @page_varables;
   my @pages_to_get = ();
-    my $webpage_root = $webpage_rootG; 'generated_pages/chips';
+    my $webpage_root = 'generated_pages/chips';
 
   # Home
   push @pages_to_get, { page_varables => { page => "" },
@@ -5236,29 +5015,31 @@ sub create_page_list{
   push @pages_to_get, { page_varables => { page => "cat", type => "app" },
                         file_location => "$webpage_root/applications/index.html" };
   #
-  #
-  # # Manufacture Pages (m)
-  # #   $page = "manufacturer";
-  # #   $manufacturer =
-	# # @manufListGlobal
-  # print Dumper \@manufListGlobal;
+  # #
+  # # # Manufacture Pages (m)
+  # # #   $page = "manufacturer";
+  # # #   $manufacturer =
+	# # # @manufListGlobal
+  # # print Dumper \@manufListGlobal;
   foreach $manuf (@manufListGlobal){
+    $DEBUG_TEXT .= "$manuf, ";
      push @pages_to_get, { page_varables => { page => "manufacturer", manufacturer=> $manuf },
                         file_location => "$webpage_root/m/$manuf/index.html" };
   }
-
+  $DEBUG_TEXT = "\n";
   #
+  # #
+  # #
+  # #
+  # # # Manufacture Family Pages (mf)
+  # # #   $page = "manufacturer";
+	# # #   $manufacturer =
+	# # #   $family =
+  # # @manufFamilyListGlobal
   #
-  #
-  # # Manufacture Family Pages (mf)
-  # #   $page = "manufacturer";
-	# #   $manufacturer =
-	# #   $family =
-  # @manufFamilyListGlobal
-  
-  # make a manuf family list in keys
+  # # make a manuf family list in keys
   # my %man_fam = get_manuf_fam_list();
-  # #manuf
+  # # #manuf
   # foreach my $manuf (keys %man_fam){
   #   foreach my $fam (keys %{ $man_fam{$manuf} }){
   #     push @pages_to_get, { page_varables => { page => "manufacturer", manufacturer => $manuf, family => $fam },
@@ -5266,37 +5047,37 @@ sub create_page_list{
   #     # print " --> $manuf - $fam\n";
   #   }
   # }
-
   #
-  #
-  #
-  # # Single IC Pages (ic)
-  # #   $page = "chip";
-	# #   $manufacturer =
-	# #   $part =
-  #
-  #
-  #
-  # # Family Pages
-  # #   $page = "family";
-	# #   $family =
-  # # @familyListGlobal
-  # foreach $family (@familyListGlobal){
+  # #
+  # #
+  # #
+  # # # Single IC Pages (ic)
+  # # #   $page = "chip";
+	# # #   $manufacturer =
+	# # #   $part =
+  # #
+  # #
+  # #
+  # # # Family Pages
+  # # #   $page = "family";
+	# # #   $family =
+  # # # @familyListGlobal
+  #   foreach $family (@familyListGlobal){
   #     push @pages_to_get, { page_varables => { page => "family", family => $family },
   #                       file_location => "$webpage_root/family/$family/index.html" };
   # }
-
-  # Board pages (module and eval pages)
-  # #   $page = "board";
-  # #   $type = ("eval", "module");
+  #
+  # # Board pages (module and eval pages)
+  # # #   $page = "board";
+  # # #   $type = ("eval", "module");
   # push @pages_to_get, { page_varables => { page => "board" },
   #                       file_location => "$webpage_root/module_boards/index.html" };
   # push @pages_to_get, { page_varables => { page => "board", type => "module" },
   #                       file_location => "$webpage_root/module_boards/index.html" };
   # push @pages_to_get, { page_varables => { page => "board", type => "eval" },
   #                       file_location => "$webpage_root/evaluation_boards/index.html" };
-  #
-  #
+  # #
+  # #
   # Individual board pages
   #   $page = "board";
   #   $manuf =
@@ -5317,18 +5098,7 @@ sub create_page_list{
 
 
 
-# initialized the %data variable, previously used by cgi args
-sub init_data {
 
-    my %query_out;
-		$query_out{'page'} = 'e'; 
-    $query_out{'name'} = 'b'; 
-		$query_out{'type'} = 'f'; 
-		$query_out{'part'} = 'a'; 
-  	$query_out{'manufacturer'} = "c"; 
-		$query_out{'family'} = "d";
-		return %query_out
-}
 
 
 
@@ -5398,12 +5168,14 @@ sub main{
 # Gets spreadsheet's last edit date
   $spreadsheetFileName = $include_files_root . '/' . $chip_spreadsheet_file;
   $updateDate = ''; # ctime(stat($spreadsheetFileName)->mtime);
-  @updateDateA = split(/ /,$updateDate);
-  if ( $updateDateA[4] =~ /:/ ) {
-    $updateDate = $updateDateA[1] . " " . $updateDateA[3] . ", " . $updateDateA[5]; 
-  } else {
-    $updateDate = $updateDateA[1] . " " . $updateDateA[2] . ", " . $updateDateA[4]; 
-  }
+
+  # FIXME
+  # @updateDateA = split(/ /,$updateDate);
+  # if ( $updateDateA[4] =~ /:/ ) {
+  #   $updateDate = $updateDateA[1] . " " . $updateDateA[3] . ", " . $updateDateA[5];
+  # } else {
+  #   $updateDate = $updateDateA[1] . " " . $updateDateA[2] . ", " . $updateDateA[4];
+  # }
 
 # Gets the scripts location -> $scriptLoc
 # &check_script_location; # no longer used
@@ -5474,12 +5246,14 @@ sub main{
 
 
 #Initialize
-our %data;
+
 %data = &read_input; #
-%manufListCountGlobal = {};
+%manufListCountGlobal;
 
 $DEBUG_TEXT = "DEBUG:\n";
 
+
+# $data{"page"} = '';
 
   $updateDate = '';
   @updateDateA = ();

@@ -33,3 +33,11 @@ inc/
 /MANIFEST.bak
 /pm_to_blib
 /*.zip
+
+# Generated pages
+generated_pages/
+
+
+out
+out.txt
+out.log
