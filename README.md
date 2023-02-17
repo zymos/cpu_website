@@ -1,3 +1,5 @@
+# OLD Version of my website
+
 # cpu_website
 my cpu website "CPU Graveyard" and "CPU Graveyard Die Shots"
 
